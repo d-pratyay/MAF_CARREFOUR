@@ -1,0 +1,30 @@
+Input fields - Driver name and delivery date
+Output - Calculated cost and number of delivery
+
+
+Trainee          
+CH (d + pd <= 10 -> (d + pd)*45) || (d + pd > 10 -> 450 + (d + pd - 10)*55)
+N (d + pd <= 12 ->  (d + pd)*30) || (d + pd > 12 -> 360 + (d + pd - 12)*35)
+
+
+Pro
+CH (d + pd <= 10 -> 450) || (d + pd > 10 -> 450 + (d + pd - 10)*55)
+N (d + pd <= 12 -> 360) || (d + pd > 12 -> 360 + (d + pd - 12)*35)
+
+
+< -ch- , -c- >
+< -trn- , -tr- >
+
+
+Display
+
+Driver Name :
+Delivered :
+Partially Delivered :
+isTrainee: Yes/No
+Delivery cost: 
+
+
+654565 -Debasish Halder
+456356 -Debasish Roy
+

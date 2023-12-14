@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      #container {
+        margin-top: 100px;
+        text-align: center;
+      }
+      .inputfields {
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        <div>
+            <input id="upload" type=file name="files[]">
+        </div>
+        <div class="inputfields">
+          <label for="driver">Enter Driver Name:</label>
+          <input type="text" id="driver" />
+        </div>
+        <div class="inputfields">
+          <label for="date">Enter Date:</label>
+          <input type="date" name="" id="date" />
+        </div>
+
+        <div class="inputfields">
+          <button type="submit" onclick="getDetails()">Get Details</button>
+        </div>
+      </div>
+
+      <div>
+        <p id="display"></p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
