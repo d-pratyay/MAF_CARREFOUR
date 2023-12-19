@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  background: #2b5876; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4e4376,
+    #2b5876
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4e4376,
+    #2b5876
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wrapper {
+  flex-wrap: wrap;
+  background-color: white;
+  color: black;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+#displayWrapper {
+  margin: 10px;
+  font-size: larger;
+}
+
+.output-label {
+  color: #2b5876;
+  margin-top: 5px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-18 {
+  margin-top: 17px;
+  align-items: center;
+  background-color: #0a66c2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus {
+  background-color: #16437e;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.button-18:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.output {
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+#driver,
+#date {
+  font-size: small;
+  color: #553c9a;
+  padding: 0.5em;
+  border: thin solid #b393d3;
+  border-radius: 7px;
+}
+
+input::file-selector-button {
+  cursor: pointer;
+  font-size: small;
+  color: #553c9a;
+  padding: 0.5em;
+  border: thin solid #b393d3;
+  border-radius: 7px;
+  background-color: white;
+  transition: 0.5s;
+}
+
+input[type="file"]::-ms-browse:hover {
+  background-color: #b393d3;
+  color: white;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #b393d3;
+  color: white;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #b393d3;
+  color: white;
+}
+
+.inputfields {
+  margin: 10px;
+}

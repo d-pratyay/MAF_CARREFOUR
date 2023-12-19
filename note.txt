@@ -24,7 +24,3 @@ Partially Delivered :
 isTrainee: Yes/No
 Delivery cost: 
 
-
-654565 -Debasish Halder
-456356 -Debasish Roy
-

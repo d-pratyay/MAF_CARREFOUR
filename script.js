@@ -2,6 +2,17 @@ document
   .getElementById("upload")
   .addEventListener("change", handleFileSelect, false);
 
+var wrapper = document.getElementById("wrapper");
+
+var driver = "";
+var date = "";
+var display = document.getElementById("displayWrapper");
+var submitButton = document.getElementById("submitButton");
+var starAdded = false;
+
+document.getElementById("driver").addEventListener("change", enableButton);
+document.getElementById("date").addEventListener("change", enableButton);
+
 var parsedData = "";
 
 var ExcelToJSON = function () {
@@ -10,9 +21,15 @@ var ExcelToJSON = function () {
 
     reader.onload = function (e) {
       var data = e.target.result;
-      var workbook = XLSX.read(data, {
-        type: "binary",
-      });
+      try {
+        var workbook = XLSX.read(data, {
+          type: "binary",
+        });
+      } catch (error) {
+        submitButton.disabled = true;
+        display.innerHTML = ` <p> ${error.message} </p> `;
+      }
+
       workbook.SheetNames.forEach(function (sheetName) {
         var XL_row_object = XLSX.utils.sheet_to_row_object_array(
           workbook.Sheets[sheetName]
@@ -24,13 +41,13 @@ var ExcelToJSON = function () {
 
     reader.onerror = function (ex) {
       console.log(ex);
+      submitButton.disabled = true;
+      display.innerHTML = ` <p> ${ex} </p> `;
     };
 
     reader.readAsBinaryString(file);
   };
 };
-
-
 
 function handleFileSelect(evt) {
   var files = evt.target.files;
@@ -38,24 +55,30 @@ function handleFileSelect(evt) {
   xl2json.parseExcel(files[0]);
 }
 
-function appendStar(){
-    
+function enableButton() {
+  driver = document.getElementById("driver").value;
+  date = document.getElementById("date").value;
+
+  if (driver.length > 0 && date.length > 0 && parsedData.length > 0) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
 }
 
 function getDetails() {
-  //   console.log(parsedData);
-  var driver = document.getElementById("driver").value;
-  var date = document.getElementById("date").value;
-  var display = document.getElementById("display");
   driver = driver + "*";
 
   date = formatDate(date);
 
-  parsedData.forEach((item) => {
-    if (item.driver) {
-      item.driver = item.driver + "*";
-    }
-  });
+  if (!starAdded) {
+    parsedData.forEach((item) => {
+      if (item.driver) {
+        item.driver = item.driver + "*";
+      }
+    });
+    starAdded = true;
+  }
 
   var deliveredList = parsedData.filter((item) => {
     if (item["Delivered"]) {
@@ -73,6 +96,11 @@ function getDetails() {
       );
     }
   });
+
+  if (!deliveredList[0] && !partiallyDeliveredList[0]) {
+    display.innerHTML = ` <p> No records found! </p> `;
+    return;
+  }
 
   var driverName = driver.replace("*", "");
   var isTrainee = false;
@@ -129,12 +157,17 @@ function getDetails() {
     }
   }
 
-  display.innerText = ` 
-  Driver Name: ${driverName} \n
-  isTrainee: ${isTrainee} \n
-  Delivered : ${delivered} \n 
-  Partially Delivered : ${partiallyDelivered} \n
-  Delivery Cost: ${deliveryCost} \n
+  display.innerHTML = ` 
+          <br>
+          <hr>
+          <br>
+          <div class="output"><span class="output-label">Driver Name: </span><span>${driverName}</span></div>
+          <div class="output"><span class="output-label">Is Trainee: </span><span>${
+            isTrainee ? "Yes" : "No"
+          }</span></div>
+          <div class="output"><span class="output-label">Delivered: </span><span>${delivered}</span></div>
+          <div class="output"><span class="output-label">Partially Delivered: </span>${partiallyDelivered}<span></span></div>
+          <div class="output"><span class="output-label">Delivery Cost: </span><span>${deliveryCost}</span></div>
   `;
 }
 

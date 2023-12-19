@@ -3,39 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <style>
-      #container {
-        margin-top: 100px;
-        text-align: center;
-      }
-      .inputfields {
-        margin: 15px;
-      }
-    </style>
+    <script
+      src="https://kit.fontawesome.com/1226568128.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Cost Validation</title>
   </head>
   <body>
     <div id="container">
-      <div>
-        <div>
-            <input id="upload" type=file name="files[]">
+      <div id="wrapper">
+        <div class="center">
+          <h1>Cost Validation</h1>
+        </div>
+
+        <div class="inputfields">
+          <label for="upload" class="input-label">Upload File:</label>
+          <input id="upload" type="file" name="files[]" />
         </div>
         <div class="inputfields">
-          <label for="driver">Enter Driver Name:</label>
+          <label for="driver" class="input-label">Enter Driver Name:</label>
           <input type="text" id="driver" />
         </div>
-        <div class="inputfields">
+        <div class="inputfields" class="input-label">
           <label for="date">Enter Date:</label>
           <input type="date" name="" id="date" />
         </div>
 
-        <div class="inputfields">
-          <button type="submit" onclick="getDetails()">Get Details</button>
+        <div class="inputfields center">
+          <button
+            type="submit"
+            class="button-18"
+            id="submitButton"
+            onclick="getDetails()"
+            disabled
+          >
+            Get Details
+          </button>
         </div>
-      </div>
 
-      <div>
-        <p id="display"></p>
+        <div id="displayWrapper"></div>
       </div>
     </div>
 
